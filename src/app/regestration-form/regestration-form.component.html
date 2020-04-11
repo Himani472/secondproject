@@ -1,0 +1,180 @@
+<body>
+<div style="padding: 40px 200px">
+    <div class="col" style="padding: 10px 150px;">
+        <!--Card-->
+        <mdb-card cascade="true">
+
+            <!--Card image-->
+            <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+                <a>
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+            <!--/Card image-->
+
+            <mdb-card-body cascade="true" class="text-center">
+                <!--Card content-->
+                <h4 class="card-title">
+                    <strong>Sign Up</strong>
+                </h4>
+
+                <mdb-card-text>
+                    <!-- Default form register -->
+                    <form class="text-center border border-light p-5" [formGroup]="registerForm"
+                        (ngSubmit)="onSubmit()">
+
+                        <div class="form-row mb-4">
+                            <div class="col">
+                                <!-- First name -->
+                                <input type="text" id="defaultRegisterFormFirstName" class="form-control"
+                                    placeholder="First name" formControlName="firstName">
+                            </div>
+                            <div class="col">
+                                <!-- Last name -->
+                                <input type="text" id="defaultRegisterFormLastName" class="form-control"
+                                    placeholder="Last name" formControlName="lastName">
+                            </div>
+                        </div>
+                        <!-- Form error for first name -->
+                        <div class="form-errors"
+                            *ngIf="registerForm.get('firstName').dirty || registerForm.get('firstName').touched">
+
+                            <span class="error" *ngIf="registerForm.get('firstName').errors?.required">
+                                FirstName is required</span>
+
+                            <span class="error" *ngIf="registerForm.get('firstName').errors?.minlength">
+                                First Name must be minimum 3 characters</span>
+
+                            <span class="error" *ngIf="registerForm.get('firstName').errors?.maxlength">
+                                First Name must be maximum 10 characters</span>
+
+                        </div>
+
+
+                        <!-- Form error for last name -->
+                        <div class="form-errors"
+                            *ngIf="registerForm.get('lastName').dirty || registerForm.get('lastName').touched">
+
+                            <span class="error" *ngIf="registerForm.get('lastName').errors?.required">
+                                lastName is required</span>
+
+                            <span class="error" *ngIf="registerForm.get('lastName').errors?.minlength">
+                                lastName must be minimum 3 characters</span>
+
+                            <span class="error" *ngIf="registerForm.get('lastName').errors?.maxlength">
+                                lastName must be maximum 10 characters</span>
+                        </div>
+
+                        <!-- E-mail -->
+                        <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4"
+                            placeholder="E-mail" formControlName="email">
+
+                        <!-- Form error for Email -->
+                        <div class="form-errors"
+                        *ngIf="registerForm.get('email').dirty || registerForm.get('email').touched">
+
+                            <span class="error" *ngIf="registerForm.get('email').errors?.required">
+                               Email is required</span>
+                        </div>
+                            
+                      
+
+                        <!-- Password -->
+                        <input type="password" id="defaultRegisterFormPassword" class="form-control"
+                            placeholder="Password" formControlName="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                        <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                            At least 8 characters and 1 digit
+                        </small>
+                        <div class="form-errors"
+                        *ngIf="registerForm.get('Password').dirty || registerForm.get('Password').touched">
+
+                            <span class="error" *ngIf="registerForm.get('Password').errors?.required">
+                               Password is required</span>
+                               
+                            <span class="error" *ngIf="registerForm.get('Password').errors?.minlength">
+                                Password must be minimum 3 characters</span>
+
+                            <span class="error" *ngIf="registerForm.get('Password').errors?.maxlength">
+                                Password must be maximum 10 characters</span>
+                        </div>
+
+                        <!-- Phone number -->
+                        <input type="text" id="defaultRegisterPhonePassword" class="form-control"
+                            placeholder="Phone number" formControlName="number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+                        <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
+                            Optional - for two-step authentication
+                        </small>
+                        <div class="form-errors"
+                        *ngIf="registerForm.get('number').dirty || registerForm.get('number').touched">
+
+                            <span class="error" *ngIf="registerForm.get('number').errors?.required">
+                               Number is required</span>
+                               
+                            <span class="error" *ngIf="registerForm.get('number').errors?.minlength">
+                                Number must be minimum 3 characters</span>
+
+                            <span class="error" *ngIf="registerForm.get('number').errors?.maxlength">
+                                Number must be maximum 10 characters</span>
+                        </div>
+
+                        <!-- Newsletter -->
+                        <div class="row">
+                            <div class="col-md-6 mx-auto d-flex justify-content-center">
+                                <mdb-checkbox [default]="true">Subscribe to our newsletter</mdb-checkbox>
+                            </div>
+                        </div>
+
+                        <!-- Sign up button -->
+                        <button [disabled]="!registerForm.valid" mdbBtn color="info" block="true" class="my-4"
+                            type="submit">Sign in</button>
+                             <button (click) ="reset()" mdbBtn color="info" block="true" class="my-4"
+                            >Reset</button>
+
+                        <!-- Social register -->
+                        <p>or sign up with:</p>
+
+                        <a type="button" class="light-blue-text mx-2">
+                            <mdb-icon fab icon="facebook"></mdb-icon>
+                        </a>
+                        <a type="button" class="light-blue-text mx-2">
+                            <mdb-icon fab icon="twitter"></mdb-icon>
+                        </a>
+                        <a type="button" class="light-blue-text mx-2">
+                            <mdb-icon fab icon="linkedin"></mdb-icon>
+                        </a>
+                        <a type="button" class="light-blue-text mx-2">
+                            <mdb-icon fab icon="github"></mdb-icon>
+                        </a>
+
+                        <hr>
+
+                        <!-- Terms of service -->
+                        <p>By clicking
+                            <em>Sign up</em> you agree to our
+                            <a href="" target="_blank">terms of service</a></p>
+
+                    </form>
+                    <!-- Default form register -->
+                </mdb-card-text>
+
+                <!--Facebook-->
+                <a type="button" mdbBtn floating="true" size="sm" color="fb" class="waves-light" mdbWavesEffect>
+                    <mdb-icon fab icon="facebook-f"></mdb-icon>
+                </a>
+                <!--Twitter-->
+                <a type="button" mdbBtn floating="true" size="sm" color="tw" class="waves-light" mdbWavesEffect>
+                    <mdb-icon fab icon="twitter"></mdb-icon>
+                </a>
+                <!--Google +-->
+                <a type="button" mdbBtn floating="true" size="sm" color="dribbble" class="waves-light" mdbWavesEffect>
+                    <mdb-icon fab icon="dribbble"></mdb-icon>
+                </a>
+
+            </mdb-card-body>
+            <!--/.Card content-->
+
+        </mdb-card>
+        <!--/.Card-->
+    </div>
+</div>
+</body>
